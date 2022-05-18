@@ -1,0 +1,23 @@
+[package]
+name = "sunrise-api"
+version = "0.1.0"
+authors = ["Rob Hardwick <robhardwick@gmail.com>"]
+edition = "2018"
+
+[profile.release]
+panic = "abort"
+opt-level = "z"
+lto = true
+codegen-units = 1
+incremental = false
+
+[dependencies]
+axum = { version = "0.5", features = ["query"] }
+chrono = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sunrise = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tower-http = { version = "0.3.0", features = ["trace"] }
